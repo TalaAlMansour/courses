@@ -1373,6 +1373,7 @@ li.card-meta-item {
 
 .hero-content .section-title {
     margin-bottom: 1rem;
+    text-transform: capitalize;
 }
 
 .about {

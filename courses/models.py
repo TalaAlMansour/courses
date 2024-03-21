@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 
+
 # ============ course model ================
-
-
 class Course(models.Model):
     coursename = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
@@ -57,3 +56,6 @@ class News(models.Model):
         upload_to='newsImage/', null=True, blank=True, verbose_name="image")
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     update_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "News"

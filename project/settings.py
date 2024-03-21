@@ -159,7 +159,6 @@ JAZZMIN_SETTINGS = {
     "custom_js": None,
     "use_google_fonts_cdn": True,
     "changeform_format": "single",
-    "show_ui_builder": True,
 }
 
 

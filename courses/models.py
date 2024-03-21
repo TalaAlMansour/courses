@@ -43,6 +43,8 @@ class Level(models.Model):
     section = models.ForeignKey(
         Section, on_delete=models.CASCADE, verbose_name=_("Section"))
     levelDescription = models.TextField(verbose_name=_("Level Description"))
+    image_level = models.ImageField(
+        upload_to='pictures/', null=True, blank=True, verbose_name=_("Image Level"))
    # video = models.FileField(null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     update_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)

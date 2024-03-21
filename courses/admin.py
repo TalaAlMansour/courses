@@ -44,6 +44,14 @@ class LevelAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'update_at',)
     list_display = ('levelTitle', 'section', 'created_at', 'update_at',)
 
+    def image(self, obj):
+        if obj.image_level:
+            return mark_safe('<img src="{url}" width="500" />'.format(url=obj.image_level.url))
+        else:
+            return 'No Image'
+
+    image.short_description = 'Display Image'
+
 
 # =============== News Model =================
 @admin.register(News)
@@ -52,3 +60,11 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'update_at',)
     list_display = ('news_title', 'news_date', 'lessonsNum',
                     'created_at', 'update_at',)
+
+    def image(self, obj):
+        if obj.newsImage:
+            return mark_safe('<img src="{url}" width="500" />'.format(url=obj.newsImage.url))
+        else:
+            return 'No Image'
+
+    image.short_description = 'Display Image'

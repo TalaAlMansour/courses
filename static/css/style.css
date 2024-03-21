@@ -736,6 +736,7 @@ body {
 .video {
     background-size: contain;
     background-position: center top;
+    padding-block: 7rem;
 }
 
 .section-Videotitle {
@@ -1368,4 +1369,8 @@ body {
 li.card-meta-item {
     display: flex;
     align-items: center;
+}
+
+.pt-7 {
+    padding-block: 7rem;
 }

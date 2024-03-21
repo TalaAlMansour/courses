@@ -127,89 +127,70 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ========= dashboard ================
 JAZZMIN_SETTINGS = {
-
     "site_title": "Courses",
     "site_header": "Courses",
-
-    # Logo to use for your site, must be present in static files, used for brand on top left
     "site_logo": "images/logo.png",
-
-    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": "images/logo.png",
-
-    # Logo to use for login form in dark themes (defaults to login_logo)
     "login_logo_dark": "images/logo.png",
-
-    # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
-
-    # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
     "site_icon": "images/logo.png",
-
-    # Welcome text on the login screen
     "welcome_sign": "Welcome to the Courses",
-
-    # Copyright on the footer
     "copyright": "Courses",
-
-
-    # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
-
-    ############
-    # Top Menu #
-    ############
-
-    # Links to put along the top menu
     "topmenu_links": [
-
         # Url that gets reversed (Permissions can be added)
         {"name": "Home",  "url": "admin:index",
             "permissions": ["auth.view_user"]},
-
     ],
-
-
-    #############
-    # Side Menu #
-    #############
-
-    # Whether to display the side menu
+    "hide_apps": ['auth'],
     "show_sidebar": True,
-
-    # Whether to aut expand the menu
-    "navigation_expanded": True,
-
-    # for the full list of 5.13.0 free icon classes
+    "navigation_expanded": False,
+    "order_with_respect_to": ["courses.course", "courses.level", "courses.section", "courses.news"],
     "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
+        "courses": "fas fa-graduation-cap",
+        "courses.news": "fas fa-regular fa-newspaper",
+        "courses.course": "fas fa-solid fa-book-open",
+        "courses.level": "fas fa-solid fa-layer-group",
+        "courses.section": "fas fa-solid fa-puzzle-piece",
     },
-
-    #############
-    # UI Tweaks #
-    #############
-
     "theme": "darkly",
     "dark_mode_theme": "darkly",
-
-    # Relative paths to custom CSS/JS scripts (must be present in static files)
     "custom_css": None,
     "custom_js": None,
-    # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,
-    # Whether to show the UI customizer on the sidebar
-    # "show_ui_builder": True,
-
-    ###############
-    # Change view #
-    ###############
-    # Render out the change view as a single form, or in tabs, current options are
-    # - single
-    # - horizontal_tabs (default)
-    # - vertical_tabs
-    # - collapsible
-    # - carousel
     "changeform_format": "single",
+    "show_ui_builder": True,
+}
+
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-gray",
+    "accent": "accent-lightblue",
+    "navbar": "navbar-dark",
+    "no_navbar_border": True,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": True,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-info",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "materia",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    },
 }

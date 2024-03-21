@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Course, Section, Level, News
 from django import forms
+from django.utils.safestring import mark_safe
 
 
 class SectionAdminForm(forms.ModelForm):
@@ -24,6 +25,16 @@ class SectionAdmin(admin.ModelAdmin):
     list_display = ('sectiontitle', 'course', 'created_at', 'update_at')
     search_fields = ('sectiontitle', 'description',)
     list_filter = ('created_at', 'update_at',)
+
+    readonly_fields = ["image"]
+
+    def image(self, obj):
+        if obj.pictureSection:
+            return mark_safe('<img src="{url}" width="500" />'.format(url=obj.pictureSection.url))
+        else:
+            return 'No Image'
+
+    image.short_description = 'Display Image'
 
 
 # =============== Level Model =================

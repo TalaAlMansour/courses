@@ -1,15 +1,19 @@
 from django.db import models
 from django.utils.text import slugify
-# Create your models here.
+
+# ============ course model ================
 
 
 class Course(models.Model):
     coursename = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    update_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
         return self.coursename
 
 
+# ============ section model ================
 class Section(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     sectiontitle = models.CharField(max_length=1000)
@@ -17,6 +21,8 @@ class Section(models.Model):
     pictureSection = models.ImageField(
         upload_to='pictures/', null=True, blank=True, verbose_name="image")
     section_Slug = models.SlugField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    update_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
         return self.sectiontitle
@@ -27,6 +33,7 @@ class Section(models.Model):
         super(Section, self).save()
 
 
+# ============ level model ================
 class Level(models.Model):
     levelTitle = models.CharField(max_length=100, null=True)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
@@ -39,6 +46,7 @@ class Level(models.Model):
         return self.levelTitle
 
 
+# ============ news model ================
 class News(models.Model):
 
     news_title = models.CharField(max_length=100)
@@ -47,3 +55,5 @@ class News(models.Model):
     lessonsNum = models.IntegerField()
     newsImage = models.ImageField(
         upload_to='newsImage/', null=True, blank=True, verbose_name="image")
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    update_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)

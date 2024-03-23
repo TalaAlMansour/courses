@@ -43,6 +43,7 @@ class LevelAdmin(admin.ModelAdmin):
     search_fields = ('levelTitle', 'levelDescription',)
     list_filter = ('created_at', 'update_at',)
     list_display = ('levelTitle', 'section', 'created_at', 'update_at',)
+    readonly_fields = ["image"]
 
     def image(self, obj):
         if obj.image_level:
@@ -60,6 +61,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'update_at',)
     list_display = ('news_title', 'news_date', 'lessonsNum',
                     'created_at', 'update_at',)
+    readonly_fields = ["image"]
 
     def image(self, obj):
         if obj.newsImage:

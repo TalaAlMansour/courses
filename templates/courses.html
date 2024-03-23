@@ -1,5 +1,5 @@
-{% load static %} {% extends 'base.html' %} {% block body %} {% for course_data
-in data %} {% for section_data in course_data.sections %}
+{% load static %} {% load i18n %} {% extends 'base.html' %} {% block body %} {%
+for course_data in data %} {% for section_data in course_data.sections %}
 <div class="contin">
   <div class="service-section">
     <div class="skewed">
@@ -11,7 +11,7 @@ in data %} {% for section_data in course_data.sections %}
         <img src="./images/Thinking face-cuate.svg" alt="img" />
       </div>
     </div>
-    
+
     {% for level in section_data.levels %}
     <div class="cards">
       <div class="card">

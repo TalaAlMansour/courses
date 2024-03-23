@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block body %} {% load static %}
+{% extends 'base.html' %} {% load i18n %}{% block body %} {% load static %}
 
 <main>
     <article>
@@ -92,18 +92,21 @@
         <!-- NEWS -->
         <section class="section news has-bg-image" id="news" aria-label="news" style="background-image: url('{% static 'images/blog-bg.svg' %}')">
             <div class="container">
-                <h2 class="h2 section-title">Our last courses</h2>
+                <h2 class="h2 section-title">Our Blog</h2>
                 <ul class="grid-list">
                     {% for item in news %}
                     <li>
                         <div class="news-card">
                             <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
-                                <img src="{% static 'images/blog-1.jpg' %}" width="370" height="370" loading="lazy" alt="new course" class="img-cover">
+                                <img src={{item.newsImage.url}} width="370" height="370" loading="lazy" alt="new course" class="img-cover">
                             </figure>
                             <div class="card-content">
                                 <h3 class="h3">
                                     <a href="#" class="card-title">{{ item.news_title }}</a>
                                 </h3>
+                                <p class="card-text">
+                                    {{ item.news_desc }}
+                                </p>
                                 <ul class="card-meta-list">
                                     <li class="card-meta-item">
                                         <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
@@ -114,9 +117,7 @@
                                         <span class="span">{{ item.lessonsNum }}</span>
                                     </li>
                                 </ul>
-                                <p class="card-text">
-                                    {{ item.news_desc }}
-                                </p>
+
                             </div>
                         </div>
                     </li>

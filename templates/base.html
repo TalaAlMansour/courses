@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load i18n %}
 
 <!DOCTYPE html>
 <html>
@@ -22,6 +22,7 @@
 
 <body id="top">
 
+
     <header class="header" data-header>
         <div class="container">
 
@@ -42,29 +43,43 @@
                 </div>
                 <ul class="navbar-list">
                     <li class="navbar-item">
-                      <a href="#" class="navbar-link" data-nav-link>Home</a>
+                        <a href="#" class="navbar-link" data-nav-link>
+                            {% trans "Home" %}
+                        </a>
                     </li>
+
+
                     {% for course_data in data %}
-                    <li class="navbar-item"><a href="#" class="navbar-link" data-nav-link >
+                    <li class="navbar-item"><a href="#" class="navbar-link" data-nav-link>
                     {{ course_data.course.coursename}}
                        <i class="fa-solid fa-angle-down"></i></a>
-                      <div class="dropdown">
-                      <ul class="dropdown_list">
-                        {% for section_data in course_data.sections %}
-                      <li class="dropdown_item"><a href="#" class="navbar-link" data-nav-link>
+                        <div class="dropdown">
+                            <ul class="dropdown_list">
+                                {% for section_data in course_data.sections %}
+                                <li class="dropdown_item"><a href="#" class="navbar-link" data-nav-link>
           {{section_data.section.sectiontitle}}
                          </a></li>
-                         {% endfor%}
-                     
-                    </ul>
-                  
-                    {% endfor %}
-          
-                    <li  class="navbar-item"><a href="#" class="navbar-link" data-nav-link> <i class="fa-solid fa-globe"></i> english</a></li>
-          
-                  </ul>
-          
-                </nav>
+                                {% endfor%}
+
+                            </ul>
+
+                            {% endfor %}
+
+                            <!-- =========== check for language ========== -->
+                            {% if request.LANGUAGE_CODE == 'en' %}
+                            <li class="navbar-item">
+                                <a href="/ar/" class="navbar-link"> <i class="fa-solid fa-globe"></i> العربية</a>
+                            </li>
+                            {% elif request.LANGUAGE_CODE == 'ar' %}
+                            <li class="navbar-item">
+                                <a href="/en/" class="navbar-link"> <i class="fa-solid fa-globe"></i> English</a>
+                            </li>
+                            {% endif %}
+
+
+                </ul>
+
+            </nav>
 
             <div class="header-actions">
                 <button class="header-action-btn" data-nav-toggler>
@@ -73,7 +88,7 @@
             </div>
 
             <div class="overlay" data-nav-toggler data-overlay></div>
-        </div>
+            </div>
     </header>
 
     {% block body %} {% endblock body %}
